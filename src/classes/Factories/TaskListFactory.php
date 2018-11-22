@@ -6,7 +6,7 @@ use Todo\TaskList;
 
 class TaskListFactory
 {
-    public static function __invoke($c)
+    public function __invoke($c)
     {
         $db = $c->get('DBConnection');
         $stmt = $db->prepare('SELECT id, desc, status FROM tasks');
