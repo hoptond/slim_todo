@@ -21,7 +21,7 @@ class TaskListController
     public function __invoke(Request $request, Response $response, array $args)
     {
         $this->logger->info("Slim-Skeleton '/' route");
-        $args['tasklist'] = $this->get('TaskList');
+        $args['tasklist'] = $this->taskList;
         // Render index view
         return $this->renderer->render($response, 'index.phtml', $args);
     }
