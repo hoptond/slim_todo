@@ -31,7 +31,7 @@
         <form method="post">
             <ul>
                 <?php
-                   echo \Todo\ViewHelpers\TaskListHelper::ListTasks(['task', 'task', 'task']);
+                   echo \Todo\ViewHelpers\TaskListHelper::ListTasks($tasklist->getTasks());
                 ?>
                 <li>
                     <input type="text" placeholder="Enter a new task here...">

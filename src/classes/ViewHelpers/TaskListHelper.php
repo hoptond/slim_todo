@@ -10,7 +10,7 @@ class TaskListHelper
         $integer = 1;
         foreach ($tasks as $task)
         {
-            $output .= '<li>' . '<input type="checkbox" id="'. $integer . '"><span>' . $task . '</span>';
+            $output .= '<li>' . '<input type="checkbox" id="'. $integer . '"><span>' . $task->getDesc() . '</span>';
             $integer++;
         }
         return $output;
