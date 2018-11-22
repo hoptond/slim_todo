@@ -16,7 +16,7 @@
             }
 
             h1 {
-                color: #719e40;
+                color: #56749e;
                 letter-spacing: -3px;
                 font-family: 'Lato', sans-serif;
                 font-size: 100px;
@@ -28,11 +28,16 @@
     <body>
         <h1>Slim</h1>
         <div>a microframework for PHP</div>
-
-        <?php if (isset($name)) : ?>
-            <h2>Hello <?= htmlspecialchars($name); ?>!</h2>
-        <?php else: ?>
-            <p>Try <a href="http://www.slimframework.com">SlimFramework</a></p>
-        <?php endif; ?>
+        <form method="post">
+            <ul>
+                <?php
+                   echo \Todo\ViewHelpers\TaskListHelper::ListTasks(['task', 'task', 'task']);
+                ?>
+                <li>
+                    <input type="text" placeholder="Enter a new task here...">
+                </li>
+            </ul>
+            <input type="submit" value="SUBMIT">
+        </form>
     </body>
 </html>
