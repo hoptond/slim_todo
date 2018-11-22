@@ -17,8 +17,7 @@ class UpdateListControllerFactory
     {
         $logger = $c->get('logger');
         $renderer = $c->get('renderer');
-        $db = $c->get('DBConnection')->getDb();
-        $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        return new UpdateListController($logger, $renderer, $db);
+        $update = $c->get('UpdateDBModel');
+        return new UpdateListController($logger, $renderer, $update);
     }
 }

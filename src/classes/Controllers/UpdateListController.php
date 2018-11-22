@@ -11,32 +11,29 @@ namespace Todo\Controllers;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Todo\DBConnection;
+use Todo\Models\UpdateDBModel;
 
 class UpdateListController
 {
     private $logger;
     private $renderer;
-    private $dbConnection;
+    private $updateDBModel;
 
-    public function __construct($logger, $renderer, $dbConnection)
+    public function __construct($logger, $renderer, UpdateDBModel $updateDBModel)
     {
         $this->logger = $logger;
         $this->renderer = $renderer;
-        $this->dbConnection = $dbConnection;
+        $this->updateDBModel = $updateDBModel;
     }
 
     public function __invoke(Request $request, Response $response, array $args)
     {
         $this->logger->info("Slim-Skeleton '/' route");
         if (isset($_POST['new_task'])) {
-            if (trim($_POST['new_task']) !== '') {
-                $this->dbConnection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-                $sql = 'INSERT INTO tasks (`desc`,`status`) VALUES (:desc, 0)';
-                $stmt = $this->dbConnection->prepare($sql);
-                $stmt->bindParam(':desc', $_POST['new_task']);
-                $stmt->execute();
-            }
+            $this->updateDBModel->AddNewTask($_POST['new_task']);
         }
+        unset($_POST['new_task']);
+        $this->updateDBModel->UpdateExistingTasks($_POST);
         return $response->withRedirect('/');
     }
 }
