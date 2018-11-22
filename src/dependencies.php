@@ -24,3 +24,5 @@ $container['DBConnection'] = new \Todo\Factories\DBConnectionFactory();
 $container['TaskList'] = new \Todo\Factories\TaskListFactory();
 
 $container['TaskListController'] = new \Todo\Factories\TaskListControllerFactory();
+
+$container['UpdateListController'] = new \Todo\Factories\UpdateListControllerFactory();

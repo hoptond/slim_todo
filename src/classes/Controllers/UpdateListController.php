@@ -37,6 +37,6 @@ class UpdateListController
                 $stmt->execute();
             }
         }
-        header('Location:/');
+        return $response->withRedirect('/');
     }
 }

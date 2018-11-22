@@ -15,9 +15,10 @@ class UpdateListControllerFactory
 {
     public function __invoke($c)
     {
-        $logger = $c->get('Logger');
+        $logger = $c->get('logger');
         $renderer = $c->get('renderer');
         $db = $c->get('DBConnection')->getDb();
+        $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         return new UpdateListController($logger, $renderer, $db);
     }
 }
