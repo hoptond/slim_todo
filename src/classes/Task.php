@@ -4,9 +4,9 @@ namespace Todo;
 
 class Task
 {
-    private $id;
-    private $desc;
-    private $status;
+    protected $id;
+    protected $desc;
+    protected $status;
 
     /**
      * @return string Returns the description for this task.
