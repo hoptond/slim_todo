@@ -11,7 +11,7 @@ class TaskListControllerFactory
     {
         $logger = $c->get('logger');
         $renderer = $c->get('renderer');
-        $taskList = $c->get('TaskList');
+        $taskList = $c->get('TaskListModel');
         return new TaskListController($logger, $renderer, $taskList);
     }
 }

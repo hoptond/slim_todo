@@ -2,9 +2,9 @@
 
 namespace Todo\Factories;
 
-use Todo\TaskList;
+use Todo\Models\TaskListModel;
 
-class TaskListFactory
+class TaskListModelFactory
 {
     public function __invoke($c)
     {
@@ -13,6 +13,6 @@ class TaskListFactory
         $stmt = $db->prepare('SELECT `id`, `desc`, `status` FROM `tasks`');
         $stmt->execute();
         $results = $stmt->fetchAll(\PDO::FETCH_CLASS, 'Todo\Task');
-        return new TaskList($results);
+        return new TaskListModel($results);
     }
 }

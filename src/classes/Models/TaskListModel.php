@@ -1,14 +1,14 @@
 <?php
 
-namespace Todo;
+namespace Todo\Models;
 
 
-class TaskList
+class TaskListModel
 {
     private $tasks;
 
     /**
-     * TaskList constructor.
+     * TaskListModel constructor.
      * @param array $tasks
      */
     public function __construct(array $tasks)
@@ -17,7 +17,7 @@ class TaskList
     }
 
     /**
-     * @return array Returns an array of tasks contained in this TaskList.
+     * @return array Returns an array of tasks contained in this TaskListModel.
      */
     public function getTasks(): array
     {

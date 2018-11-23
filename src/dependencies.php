@@ -21,7 +21,7 @@ $container['logger'] = function ($c) {
 
 $container['DBConnection'] = new \Todo\Factories\DBConnectionFactory();
 
-$container['TaskList'] = new \Todo\Factories\TaskListFactory();
+$container['TaskListModel'] = new \Todo\Factories\TaskListModelFactory();
 
 $container['TaskListController'] = new \Todo\Factories\TaskListControllerFactory();
 
