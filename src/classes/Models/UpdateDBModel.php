@@ -43,8 +43,23 @@ class UpdateDBModel
                 continue;
             }
             $stmt = $this->dbConnection->getDb()->prepare($sql);
-            $stmt->bindParam(':status', $value);
+            $stmt->bindParam(':status', $this->GetTaskStatus($value));
             $stmt->bindParam(':id', $key);
+        }
+    }
+
+    private function GetTaskStatus($status)
+    {
+        switch ($status) {
+            case 'on' :
+                return 0;
+                break;
+            case 'off':
+                return 1;
+                break;
+            default:
+                return 0;
+                break;
         }
     }
 
