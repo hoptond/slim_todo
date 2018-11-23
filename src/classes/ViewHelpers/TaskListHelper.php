@@ -4,7 +4,7 @@ namespace Todo\ViewHelpers;
 
 class TaskListHelper
 {
-    
+
     public static function ListTasks($tasks)
     {
         $output = '';
@@ -20,7 +20,9 @@ class TaskListHelper
 
     public static function DisplayInput($task)
     {
-        return '<input type="checkbox" id="'. $task->getId() . '" name="'. $task->getId() .  '"'. self::DisplayTaskStatus($task->getStatus()) . '>';
+        $id = $task->getId();
+        $status = $task->getStatus();
+        return '<input type="checkbox" id="'. $id . '" name="'. $id .  '"'. self::DisplayTaskStatus($status) . '>';
     }
 
     public static function DisplayTaskStatus($status)
