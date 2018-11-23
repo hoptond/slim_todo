@@ -39,12 +39,13 @@ class UpdateDBModel
     {
         $sql = 'UPDATE tasks SET `status` = :status WHERE `id` = :id';
         foreach ($tasks as $key => $value) {
-            if ($value !== 'on' || $value !== 'off' || is_int($key)) {
+            if ($value !== 'on' || !is_int($key)) {
                 continue;
             }
             $stmt = $this->dbConnection->getDb()->prepare($sql);
             $stmt->bindParam(':status', $this->GetTaskStatus($value));
             $stmt->bindParam(':id', $key);
+            $stmt->execute();
         }
     }
 
@@ -52,10 +53,10 @@ class UpdateDBModel
     {
         switch ($status) {
             case 'on' :
-                return 0;
+                return 1;
                 break;
             case 'off':
-                return 1;
+                return 0;
                 break;
             default:
                 return 0;
