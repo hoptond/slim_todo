@@ -22,7 +22,6 @@ class UpdateDBModel
     public function __construct(DBConnection $dbConnection)
     {
         $this->dbConnection = $dbConnection;
-        $this->dbConnection->getDb()->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
 
     public function AddNewTask(string $taskdesc)

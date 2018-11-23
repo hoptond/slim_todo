@@ -8,7 +8,9 @@ class DBConnectionFactory
 {
     public function __invoke()
     {
-        return new DBConnection(new \PDO('mysql:dbname=todo;host=192.168.20.20','root'));
+        $db = new \PDO('mysql:dbname=todo;host=192.168.20.20','root');
+        $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        return new DBConnection($db);
     }
 
 }

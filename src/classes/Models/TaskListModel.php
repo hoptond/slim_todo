@@ -3,6 +3,8 @@
 namespace Todo\Models;
 
 
+use Todo\DBConnection;
+
 class TaskListModel
 {
     private $tasks;
@@ -11,9 +13,12 @@ class TaskListModel
      * TaskListModel constructor.
      * @param array $tasks
      */
-    public function __construct(array $tasks)
+    public function __construct(DBConnection $DBConnection)
     {
-        $this->tasks = $tasks;
+        $db = $DBConnection->getDb();
+        $stmt = $db->prepare('SELECT `id`, `desc`, `status` FROM `tasks`');
+        $stmt->execute();
+        $this->tasks = $stmt->fetchAll(\PDO::FETCH_CLASS, 'Todo\Task');
     }
 
     /**
